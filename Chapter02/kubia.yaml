@@ -1,17 +1,19 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1
+kind: ReplicaSet
 metadata:
-  name: kubia
+  name: kubia-rs
   labels:
-    run: kubia
+    app: guestbook
+    tier: kubia
 spec:
-  replicas: 1
+  replicas: 3
   selector:
-    run: kubia
+    matchLabels:
+      tier: kubia
   template:
     metadata:
       labels:
-        run: kubia
+        tier: kubia
     spec:
       containers:
       - name: kubia
