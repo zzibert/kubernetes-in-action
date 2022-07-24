@@ -6,8 +6,10 @@ spec:
   containers:
   - image: luksa/fortune:env
     env:
-    - name: INTERVAL
-      value: "30"
+    - name: FIRST_VAR
+      value: "foo"
+    - name: SECOND_VAR
+      value: "$(FIRST_VAR)bar"
     name: html-generator
     volumeMounts:
     - name: html
